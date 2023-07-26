@@ -1,0 +1,45 @@
+import random
+
+print("************************ WELCOME TO (SNAKE, WATER, GUN) GAME! ********************************\n")
+
+number_of_games = 1
+player_wins = 0
+computer_wins = 0
+
+options_list = ["Snake", "Water", "Gun"]
+
+while number_of_games <= 3:
+    print(number_of_games, ". What do you choose? (Snake, Water, Gun)")
+    players_choice = input()
+
+    computers_choice = random.choice(options_list)
+
+    print("You chose ", players_choice + ". The computer chose ", computers_choice + ".")
+    if players_choice == "Snake" and computers_choice == "Gun":
+        computer_wins += 1
+    elif players_choice == "Gun" and computers_choice == "Water":
+        computer_wins += 1
+    elif players_choice == "Water" and computers_choice == "Snake":
+        computer_wins += 1
+    elif players_choice == "Gun" and computers_choice == "Snake":
+        player_wins += 1
+    elif players_choice == "Water" and computers_choice == "Gun":
+        player_wins += 1
+    elif players_choice == "Snake" and computers_choice == "Water":
+        player_wins += 1
+    elif players_choice == computers_choice:
+        print("You chose the same thing! Try Again!\n")
+        number_of_games -= 1
+    else:
+        # players_choice != "Snake" or players_choice != "Water" or players_choice != "Gun":
+        print("Please enter a valid choice!\n")
+        number_of_games -= 1
+
+    number_of_games += 1
+
+if player_wins > computer_wins:
+    print("You Won with ", player_wins, " distinctions!")
+elif player_wins < computer_wins:
+    print("The Computer Won with ", computer_wins, " distinctions!")
+else:
+    print("It's a Draw!")
